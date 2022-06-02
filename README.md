@@ -7,21 +7,34 @@ Dynamic DNS (DDNS) keeps DNS records automatically up to date when an IP address
 ## Build Container
 > You must cd to the repo
 
-`docker build -t aws-ddns-python:local .`
+`docker build -t aws-ddns:local .`
 
 ## Dockerhub
 [patinocode/aws-ddns](https://hub.docker.com/repository/docker/patinocode/aws-ddns)
 
 ## Run Container
 > You must provide your AWS access key, secret access key, region, hosted zone ID, and domain name in environtment variables.
+
+### Run from local build
 ```
-docker run --rm --name aws-ddns-python \
+docker run --rm --name aws-ddns \
 -e AWS_ACCESS_KEY_ID="XXX" \
 -e AWS_SECRET_ACCESS_KEY="YYY" \
 -e AWS_DEFAULT_REGION="us-east-1" \
 -e DOMAIN="ddns.example.com" \
 -e HOSTEDZONE_ID="ZZZ" \
-aws-ddns-python:local
+aws-ddns:local
+```
+
+### Run from Dockerhub
+```
+docker run --rm --name aws-ddns \
+-e AWS_ACCESS_KEY_ID="XXX" \
+-e AWS_SECRET_ACCESS_KEY="YYY" \
+-e AWS_DEFAULT_REGION="us-east-1" \
+-e DOMAIN="ddns.example.com" \
+-e HOSTEDZONE_ID="ZZZ" \
+patinocode/aws-ddns:latest
 ```
 
 ## Schedule Execution
