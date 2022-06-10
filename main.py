@@ -2,6 +2,7 @@ import boto3
 import os
 import sys
 import requests
+import botocore
 
 if not os.getenv("AWS_ACCESS_KEY_ID") or not os.getenv("AWS_SECRET_ACCESS_KEY") or not os.getenv("AWS_DEFAULT_REGION"):
     print("Error: Did not provide AWS credentials or region")
